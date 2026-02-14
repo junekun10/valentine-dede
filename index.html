@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Valentine’s Day Adek Cantik 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg1: #ffe5f0;
+      --bg2: #ffc1dc;
+      --bg3: #ff9ac8;
+      --text-main: #ffffff;
+      --text-shadow: rgba(255, 150, 200, 0.9);
+      --accent: #ff4d88;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, var(--bg3), transparent 50%),
+        radial-gradient(circle at bottom right, var(--bg2), transparent 55%),
+        linear-gradient(135deg, #ffeaf4, #ffc9e4);
+      position: relative;
+      color: var(--text-main);
+    }
+
+    /* Lapisan blur lembut biar aesthetic */
+    .soft-overlay {
+      position: fixed;
+      inset: -40px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.45), transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.35), transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.35), transparent 55%);
+      filter: blur(10px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Kontainer utama */
+    .valentine-wrapper {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .valentine-content {
+      max-width: 800px;
+      padding: 24px 20px;
+      border-radius: 28px;
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.24),
+        rgba(255, 255, 255, 0.06)
+      );
+      box-shadow:
+        0 0 30px rgba(255, 120, 180, 0.45),
+        0 20px 60px rgba(180, 40, 100, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Teks utama */
+    .title {
+      font-family: "Great Vibes", "Dancing Script", "Pacifico", cursive;
+      font-size: clamp(2.2rem, 5vw, 3.3rem);
+      line-height: 1.2;
+      color: #ff2e75;
+      text-shadow:
+        0 0 10px rgba(255, 210, 235, 0.9),
+        0 0 26px rgba(255, 120, 170, 0.85);
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+      animation: fadeInTitle 1.4s ease-out forwards 0.2s;
+      padding-inline: 8px;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      color: #b94770;
+    }
+
+    @keyframes fadeInTitle {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.94);
+      }
+      55% {
+        opacity: 1;
+        transform: translateY(0) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Glow halus di belakang teks */
+    .glow-orb {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 140, 200, 0.9), transparent);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(25px);
+      opacity: 0.5;
+      pointer-events: none;
+      animation: orbPulse 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbPulse {
+      from {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.4;
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 0.7;
+      }
+    }
+
+    /* Tombol musik */
+    .music-control {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: radial-gradient(circle at top left, #ff9ec7, #ff6fa4);
+      color: #fffafc;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow:
+        0 8px 22px rgba(230, 40, 120, 0.65),
+        0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeButtonIn 1.2s ease-out forwards 1.2s;
+    }
+
+    .music-control:hover {
+      transform: translateY(0) scale(1.03);
+      background: radial-gradient(circle at bottom right, #ff8ab9, #ff4c97);
+      box-shadow:
+        0 12px 28px rgba(220, 30, 115, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.65) inset;
+    }
+
+    .music-control:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow:
+        0 4px 14px rgba(190, 20, 95, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    }
+
+    .music-control.hidden {
+      display: none;
+    }
+
+    .music-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #ff89c1);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.85);
+      position: relative;
+    }
+
+    .music-icon::before,
+    .music-icon::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      opacity: 0.6;
+      animation: pulseWave 1.8s ease-out infinite;
+    }
+
+    .music-icon::after {
+      inset: -9px;
+      opacity: 0.25;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes pulseWave {
+      from {
+        transform: scale(0.6);
+        opacity: 0.8;
+      }
+      to {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeButtonIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Info kecil */
+    .note {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      opacity: 0.8;
+      color: #ffe5f5;
+    }
+
+    /* Popup love untuk first click */
+    .love-start-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInOverlay 0.6s ease-out;
+    }
+
+    .love-start-box {
+      background: linear-gradient(145deg, #fff0f8, #ffe0ee);
+      padding: 28px 24px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow:
+        0 0 30px rgba(255, 120, 180, 0.4),
+        0 12px 28px rgba(180, 40, 100, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      max-width: 300px;
+      animation: popUpBox 0.5s ease-out;
+    }
+
+    .love-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.6));
+      animation: heartbeat 1.2s ease-in-out infinite;
+    }
+
+    .love-start-text {
+      font-size: 1.1rem;
+      color: #c2185b;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes fadeInOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popUpBox {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.15); }
+      60% { transform: scale(0.95); }
+    }
+
+    /* Blok foto di tengah card */
+    .photo-block {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .photo-frame {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-image: url("foto.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow:
+        0 12px 25px rgba(210, 70, 130, 0.65),
+        0 0 0 4px rgba(255, 255, 255, 0.85);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .photo-caption {
+      font-size: 0.9rem;
+      color: #8b284d;
+      opacity: 0.95;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Partikel hati di background */
+    .heart {
+      position: fixed;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      z-index: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(circle at 30% 30%, #fff7fc, #ff6eaa);
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      left: 0;
+    }
+
+    .heart::after {
+      right: 0;
+    }
+
+    .heart-shape {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-45deg);
+      transform-origin: center;
+      filter: drop-shadow(0 0 6px rgba(255, 120, 180, 0.8));
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translate3d(var(--x-start), 100vh, 0) scale(var(--scale))
+          rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.9;
+      }
+      60% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate3d(var(--x-end), -15vh, 0) scale(var(--scale))
+          rotate(18deg);
+        opacity: 0;
+      }
+    }
+
+    /* Bunga jatuh */
+    .flower {
+      position: fixed;
+      width: 70px;
+      height: 70px;
+      pointer-events: none;
+      transform-origin: center;
+      z-index: 2;
+    }
+
+    .flower-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      animation: spinFlower linear infinite;
+    }
+
+    /* Bunga statis di dalam card (supaya jelas kelihatan) */
+    .static-flower {
+      position: absolute;
+      bottom: -18px;
+      right: 40px;
+      width: 82px;
+      height: 82px;
+      opacity: 0.95;
+      filter: drop-shadow(0 10px 18px rgba(210, 60, 130, 0.7));
+      background-image: url("buket.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    @keyframes spinFlower {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .petal {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      left: 50%;
+      top: 50%;
+      transform-origin: center -10px;
+      border-radius: 50%;
+      background-image: url("foto.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 8px rgba(255, 170, 210, 0.85);
+    }
+
+    .petal:nth-child(1) {
+      transform: rotate(0deg) translate(-50%, -80%);
+    }
+
+    .petal:nth-child(2) {
+      transform: rotate(72deg) translate(-50%, -80%);
+    }
+
+    .petal:nth-child(3) {
+      transform: rotate(144deg) translate(-50%, -80%);
+    }
+
+    .petal:nth-child(4) {
+      transform: rotate(216deg) translate(-50%, -80%);
+    }
+
+    .petal:nth-child(5) {
+      transform: rotate(288deg) translate(-50%, -80%);
+    }
+
+    .flower-center {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #ffe6f0, var(--accent));
+      box-shadow:
+        0 0 12px rgba(255, 140, 190, 0.9),
+        0 0 20px rgba(255, 105, 180, 0.8);
+    }
+
+    /* Kelopak jatuh (falling petals) */
+    .falling-petal {
+      position: fixed;
+      width: 42px;
+      height: 42px;
+      background-image: url("kepala.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: 1;
+      filter: drop-shadow(0 6px 10px rgba(210, 70, 130, 0.6));
+      animation-name: fallPetal;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fallPetal {
+      0% {
+        transform: translate3d(var(--x-pos), -12vh, 0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      60% {
+        transform: translate3d(calc(var(--x-pos) + 4vw), 55vh, 0) rotate(25deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(calc(var(--x-pos) - 2vw), 110vh, 0) rotate(40deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsiveness */
+    @media (max-width: 600px) {
+      .valentine-content {
+        padding: 20px 16px 18px;
+        border-radius: 24px;
+      }
+
+      .title {
+        font-size: clamp(1.9rem, 8vw, 2.4rem);
+      }
+
+      .subtitle {
+        font-size: 0.8rem;
+      }
+
+      .music-control {
+        font-size: 0.8rem;
+        padding: 9px 16px;
+      }
+
+      .flower {
+        width: 56px;
+        height: 56px;
+      }
+
+      .petal {
+        width: 32px;
+        height: 32px;
+      }
+
+      .flower-center {
+        width: 16px;
+        height: 16px;
+      }
+
+      .photo-frame {
+        width: 130px;
+        height: 130px;
+      }
+
+      .static-flower {
+        width: 70px;
+        height: 70px;
+        right: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="soft-overlay"></div>
+
+  <!-- Partikel & bunga akan di-inject via JS -->
+
+  <div class="valentine-wrapper">
+    <div class="valentine-content">
+      <div class="glow-orb"></div>
+      <h1 class="title">Happy Valentine’s Day Adek Cantik 💖</h1>
+      <p class="subtitle">buat dedee yang selalu mass banggainn</p>
+
+      <div class="photo-block">
+        <div class="photo-frame"></div>
+        <p class="photo-caption">my favorite person in this universe</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ====== Partikel hati kecil di background ======
+    const MAX_HEARTS = 40;
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+
+      const scale = (Math.random() * 0.6 + 0.5).toFixed(2);
+      const duration = (Math.random() * 8 + 8).toFixed(1); // 8–16 detik
+
+      const xStart = (Math.random() * 80 - 40).toFixed(1) + "vw";
+      const xEnd = (Math.random() * 80 - 40).toFixed(1) + "vw";
+
+      heart.style.setProperty("--x-start", xStart);
+      heart.style.setProperty("--x-end", xEnd);
+      heart.style.setProperty("--scale", scale);
+      heart.style.animation = `floatHeart ${duration}s linear forwards`;
+
+      const inner = document.createElement("div");
+      inner.className = "heart-shape";
+      heart.appendChild(inner);
+
+      document.body.appendChild(heart);
+
+      // Bersihkan setelah animasi selesai
+      setTimeout(() => heart.remove(), duration * 1000);
+    }
+
+    // Jaga jumlah heart biar ga berat
+    setInterval(() => {
+      const hearts = document.querySelectorAll(".heart");
+      if (hearts.length < MAX_HEARTS) {
+        createHeart();
+      }
+    }, 600);
+
+    // ====== Falling petals (kelopak jatuh) ======
+    const PETAL_INTERVAL = 550; // ms
+    const MAX_PETALS = 45;
+
+    function createFallingPetal() {
+      const currentPetals = document.querySelectorAll(".falling-petal");
+      if (currentPetals.length >= MAX_PETALS) return;
+
+      const petal = document.createElement("div");
+      petal.className = "falling-petal";
+
+      const xPos = (Math.random() * 100).toFixed(2) + "vw";
+      petal.style.setProperty("--x-pos", xPos);
+
+      const fallDuration = Math.random() * 5 + 7; // 7–12 detik
+      const delay = (Math.random() * 2).toFixed(2); // sedikit variasi delay
+      const scale = (Math.random() * 0.5 + 0.7).toFixed(2);
+
+      petal.style.animationDuration = `${fallDuration}s`;
+      petal.style.animationDelay = `${delay}s`;
+      petal.style.transform = `scale(${scale})`;
+
+      document.body.appendChild(petal);
+
+      setTimeout(() => petal.remove(), (fallDuration + parseFloat(delay) + 1) * 1000);
+    }
+
+    setInterval(createFallingPetal, PETAL_INTERVAL);
+
+    // Spawn beberapa kelopak awal biar langsung kelihatan saat load
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createFallingPetal, i * 250);
+    }
+  </script>
+
+  <!-- Background music (hidden) -->
+  <audio id="bgMusic" src="aku-milikmu.mp3" loop preload="auto" style="display: none;"></audio>
+
+  <!-- Popup love untuk first click -->
+  <div id="loveStartOverlay" class="love-start-overlay" style="display: none;">
+    <div class="love-start-box">
+      <div class="love-icon">💕</div>
+      <p class="love-start-text">Click anywhere to start 💕</p>
+    </div>
+  </div>
+
+  <script>
+    // ====== Background music: autoplay + fallback first click ======
+    const audio = document.getElementById('bgMusic');
+    audio.volume = 0.5;
+    let audioStarted = false;
+    const overlay = document.getElementById('loveStartOverlay');
+
+    function startAudioAndHideOverlay() {
+      if (audioStarted) return;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          audioStarted = true;
+          if (overlay && overlay.style.display !== 'none') {
+            overlay.style.display = 'none';
+          }
+        }).catch(() => {
+          // Jika gagal, biarkan saja (user bisa coba lagi)
+        });
+      }
+    }
+
+    // Coba autoplay saat load
+    window.addEventListener('load', () => {
+      const hasVisited = localStorage.getItem('valentineVisited');
+      if (!hasVisited) {
+        overlay.style.display = 'flex';
+        // Tambahkan listener untuk sembarang klik di overlay
+        overlay.addEventListener('click', startAudioAndHideOverlay, { once: true });
+      } else {
+        // Jika sudah pernah, coba autoplay langsung tanpa popup
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            audioStarted = true;
+          }).catch(() => {
+            // Autoplay diblokir, fallback ke first click di luar overlay
+            document.addEventListener('click', startAudioAndHideOverlay, { once: true });
+            document.addEventListener('touchstart', startAudioAndHideOverlay, { once: true });
+          });
+        }
+      }
+    });
+
+    // Simpan flag bahwa sudah pernah buka
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('valentineVisited', 'true');
+    });
+  </script>
+</body>
+</html>
